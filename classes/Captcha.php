@@ -434,8 +434,8 @@ abstract class Captcha
 	{
 		// Output html element
 		if ($html === TRUE)
-			return '<img src="'.URL::site('captcha/'.Captcha::$config['group']).'" width="'.Captcha::$config['width'].'" height="'.Captcha::$config['height'].'" alt="Captcha" class="captcha" />';
-
+			//return '<img src="'.URL::site('captcha/'.Captcha::$config['group']).'" width="'.Captcha::$config['width'].'" height="'.Captcha::$config['height'].'" alt="Captcha" class="captcha" />';
+			return HTML::image(Route::url('captcha',array('group'=>Captcha::$config['group'])),array('style'=>'width: '.Captcha::$config['width'].'; height: '.Captcha::$config['height'],'alt'=>'Captcha','class'=>'captcha'));
 		// Send the correct HTTP header
 		$cur_resp = Request::current();
 		$cur_resp->headers('Content-Type','image/'.$this->image_type);
